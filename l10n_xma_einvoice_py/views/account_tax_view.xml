@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="inherit_view_id_inherit_account_tax" model="ir.ui.view">
+        <field name="name">account.tax.view.form.inherit</field>
+        <field name="model">account.tax</field>
+        <field name="inherit_id" ref="account.view_tax_form"/>
+        <field name="arch" type="xml">
+            <field name="tax_group_id" position="before">
+                <field name="country_id" invisible="1"/>
+                <field name="l10n_xma_edi_tax_type_id" invisible="country_id != 185" string="Tipo de impuesto que se va agregar" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                <field name="l10n_xma_base_tax" invisible="country_id != 185" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                <field name="l10n_xma_tax_factor_type_id" invisible="country_id != 185" string="Afectacion Tributaria"/>
+            </field>
+        </field>
+    </record>
+    </data>
+</odoo>

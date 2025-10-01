@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="0">
+
+    <record id="l10n_factor_type0" model="l10n_xma.tax_factor_type">
+        <field name="code">1</field>
+        <field name="name">Gravado IVA</field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_factor_type1" model="l10n_xma.tax_factor_type">
+        <field name="code">2</field>
+        <field name="name">Exonerado (Art.83- Ley 125/91)</field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_factor_type2" model="l10n_xma.tax_factor_type">
+        <field name="code">3</field>
+        <field name="name">Exento</field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_factor_type3" model="l10n_xma.tax_factor_type">
+        <field name="code">4</field>
+        <field name="name">Gravado parcial (Grav-Exento)</field>
+        <field name="country_id">185</field>
+    </record>
+
+    <record id="l10n_issuance_type_001" model="l10n_xma.issuance_type">
+        <field name="code">1</field>
+        <field name="name">Normal</field>
+        <field name="country_id">185</field>
+    </record>
+
+    <record id="l10n_issuance_type_002" model="l10n_xma.issuance_type">
+        <field name="code">2</field>
+        <field name="name">Contingencia</field>
+        <field name="country_id">185</field>
+    </record>
+    
+
+</odoo>

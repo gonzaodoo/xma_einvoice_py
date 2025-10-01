@@ -1,0 +1,12 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_economic_activity,l10n_xma.economic_activity,model_l10n_xma_economic_activity,base.group_user,1,1,1,1
+access_edi_legal_status,l10n_xma.edi.legal.status,model_l10n_xma_edi_legal_status,base.group_user,1,1,1,1
+access_edi_tax_type,l10n_xma.edi_tax_type,model_l10n_xma_edi_tax_type,base.group_user,1,1,1,1
+access_issuance_type,l10n_xma.issuance_type,model_l10n_xma_issuance_type,base.group_user,1,1,1,1
+access_municipality,l10n_xma.municipality,model_l10n_xma_municipality,base.group_user,1,1,1,1
+access_origin_operation,l10n_xma.origin_operation,model_l10n_xma_origin_operation,base.group_user,1,1,1,1
+access_payment_type,l10n_xma.payment_type,model_l10n_xma_payment_type,base.group_user,1,1,1,1
+access_tax_payer,l10n_xma.taxpayer.type,model_l10n_xma_taxpayer_type,base.group_user,1,1,1,1
+access_use_document,l10n_xma.use.document,model_l10n_xma_use_document,base.group_user,1,1,1,1
+access_xma_payment_form,xma_payment.form,model_xma_payment_form,base.group_user,1,1,1,1
+access_xma_uom_code,l10n_xma.uomcode,model_l10n_xma_uomcode,base.group_user,1,1,1,1

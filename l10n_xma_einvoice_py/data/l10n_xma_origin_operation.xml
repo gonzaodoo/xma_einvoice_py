@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+    <record id="l10n_lorigin_operation_0" model="l10n_xma.origin_operation">
+        <field name="code">1</field>
+        <field name="name">Operación presencial</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_lorigin_operation_1" model="l10n_xma.origin_operation">
+        <field name="code">2</field>
+        <field name="name">Operación electrónica</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_lorigin_operation_2" model="l10n_xma.origin_operation">
+        <field name="code">3</field>
+        <field name="name">Operación telemarketing</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_lorigin_operation_3" model="l10n_xma.origin_operation">
+        <field name="code">4</field>
+        <field name="name">Venta a domicilio</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_lorigin_operation_4" model="l10n_xma.origin_operation">
+        <field name="code">5</field>
+        <field name="name">Operación bancaria</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_lorigin_operation_5" model="l10n_xma.origin_operation">
+        <field name="code">6</field>
+        <field name="name">Operación ciclica</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_lorigin_operation_6" model="l10n_xma.origin_operation">
+        <field name="code">9</field>
+        <field name="name">Otro</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    
+
+</odoo>

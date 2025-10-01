@@ -1,0 +1,48 @@
+{
+    'name': "Facturación Electrónica Paraguay",
+    'summary': "Este módulo le permitirá emitir los documentos electrónicos acorde a los requerimiento de la SET.",
+    'description': "Cumple con la SET Fácilmente. Simplifica tus procesos fiscales con nuestra aplicación especializada en Facturación Electrónica para Paraguay.",
+    'images': ['static/description/banners/facturacion-paraguay-banner.gif'],
+    'website': 'https://xmarts.com',
+    'author': "Xmarts Group",
+    'license': 'OPL-1',
+    'category': 'Account',
+    'live_test_url': "https://www.youtube.com/watch?v=ArpmBiWNNC4",
+    'version': '18.0.0.2',
+    'price': 499.00,
+    'currency': 'USD',
+    
+    'depends': ['base','l10n_latam_base','xma_core','l10n_xma_einvoice'],
+
+    'data': [
+        #"security/ir.model.access.csv",
+        "security/res_groups.xml",
+        "views/account_move.xml",
+        "views/res_company_view.xml",
+        "views/account_payment_term_view.xml",
+        "views/account_tax_view.xml",
+        "views/res_partnert_view.xml",
+        "views/account_journal_view.xml",
+        "views/uom_uom_view.xml",
+        "views/latam_invoice_document_type.xml",
+        "views/res_country_view.xml",
+        
+        "data/l10n_xma_edi_tax_type.xml",
+        "data/l10n_xma_taxpayer_type.xml",
+        "data/l10n_latam_invoice_document_type.xml",
+        "data/l10n_xma_ecconomic_activity.xml",
+        "data/l10n_xma_issuance_type.xml",
+        "data/l10n_xma_origin_operation.xml",
+        "data/l10n_xma_use_document.xml",
+        "data/l10n_xma_payment_form.xml",
+        "data/l10n_xma.uomcode.csv",
+        "data/res.country.state.csv",
+        "data/l10n_xma.municipality.csv",
+        "data/l10n_xma.reason.discount.csv",
+        "data/res.city.csv",
+        "data/l10n_latam_identification_type.xml",
+        "report/l10n_xma_paraguay_report.xml",
+
+    ],
+    
+}

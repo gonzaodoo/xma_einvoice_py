@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="inherit_view_id_inherit_account_journal" model="ir.ui.view">
+        <field name="name">account.journal.view.form.inherit</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.view_account_journal_form"/>
+        <field name="arch" type="xml">
+            <field name="code" position="before">
+                <field name="code" invisible="1"/>
+                <field name="country_id" invisible="1"/>
+                <field name="version_document" string="Versión del documento" invisible="country_id != 185" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                <field name="l10n_xma_invoice_dir_id" invisible="country_id != 185" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                <field name="l10n_xma_latam_document_type_id" invisible="country_id != 185" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+            </field>
+            <field name="type" position="after">
+                <field name="l10n_latam_use_documents" invisible="1"/>
+            </field>
+        </field>
+    </record>
+    </data>
+</odoo>

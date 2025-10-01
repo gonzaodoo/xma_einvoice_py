@@ -1,0 +1,21 @@
+# -*- coding: utf-8 -*-
+
+# from . import account_move
+# from . import account_tax
+# from . import l10n_xma_economic_activity
+# from . import l10n_xma_edi_legal_status
+# from . import l10n_xma_edi_tax_type
+# from . import l10n_xma_issuance_type
+# from . import l10n_xma_municipality
+# from . import l10n_xma_origin_operation
+# from . import l10n_xma_payment_type
+# from . import l10n_xma_taxpayer_type
+# from . import l10n_xma_use_document
+# from . import res_partner
+# from . import res_company
+# from . import xma_payment_form
+# from . import uom_uom
+# from . import l10n_xma_uomcode
+# from . import l10n_latam_document_type
+# from . import account_journal
+# from . import res_country

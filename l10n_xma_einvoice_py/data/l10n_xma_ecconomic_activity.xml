@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+    <record id="l10n_xma_economic_activity_0" model="l10n_xma.economic_activity">
+        <field name="code">A</field>
+        <field name="name">AGRICULTURA, GANADERIA, CAZA,SILVICULTURA Y PEZCA</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_1" model="l10n_xma.economic_activity">
+        <field name="code">B</field>
+        <field name="name">EXPLOTACIÓN DE MINAS Y CANTERAS</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_2" model="l10n_xma.economic_activity">
+        <field name="code">C</field>
+        <field name="name">INDUSTRIAS MANUFACTURERAS</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_3" model="l10n_xma.economic_activity">
+        <field name="code">D</field>
+        <field name="name">SUMINISTRO DE ELECTRICIDAS, GAS, VAPOR Y AIRE ACONDICIONADO</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_4" model="l10n_xma.economic_activity">
+        <field name="code">E</field>
+        <field name="name">SUMINISTRO DE AGUA, ALCANTARILLADO, GESTIÓN DE DESECHOS Y ACTIVIDADES DE SANEAMIENTO</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_5" model="l10n_xma.economic_activity">
+        <field name="code">F</field>
+        <field name="name">CONSTRUCCIÒN</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_6" model="l10n_xma.economic_activity">
+        <field name="code">G</field>
+        <field name="name">COMERCIO AL POR MAYOR Y AL POR MENOR; REPARACIÓN DE VEHÍCULOS AUTOMOTORES Y MOTOCICLETAS</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_7" model="l10n_xma.economic_activity">
+        <field name="code">H</field>
+        <field name="name">TRANSPORTE Y ALMACENAMIENTO</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_8" model="l10n_xma.economic_activity">
+        <field name="code">I</field>
+        <field name="name">ALOJAMIENTO Y SERVICIOS DE COMIDAS</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_9" model="l10n_xma.economic_activity">
+        <field name="code">J</field>
+        <field name="name">INFORMACIÓN Y COMUNICACIÓN</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_10" model="l10n_xma.economic_activity">
+        <field name="code">K</field>
+        <field name="name">ACTIVIDADES FINANCIERAS Y DE SEGUROS</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_11" model="l10n_xma.economic_activity">
+        <field name="code">L</field>
+        <field name="name">ACTIVIDADES INMOBILIARIAS</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_12" model="l10n_xma.economic_activity">
+        <field name="code">M</field>
+        <field name="name">ACTIVIDADES PROFESIONALES, CIENTIFICAS Y TÉCNICAS</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_13" model="l10n_xma.economic_activity">
+        <field name="code">N</field>
+        <field name="name">ACTIVIDADES ADMINISTRATIVAS Y SERVICIO DE APOYO</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_14" model="l10n_xma.economic_activity">
+        <field name="code">O</field>
+        <field name="name">ADMINISTRACIÓN PÚBLICA Y DEFENSA; PLANES DE SEGURO SOCIAL OBLIGATORIO</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_15" model="l10n_xma.economic_activity">
+        <field name="code">P</field>
+        <field name="name">ENSEÑANZA</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_16" model="l10n_xma.economic_activity">
+        <field name="code">Q</field>
+        <field name="name">SALUD HUMANA Y SERVICIOS SOCIALES</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_17" model="l10n_xma.economic_activity">
+        <field name="code">R</field>
+        <field name="name">ARTE, ENTRETENIMIENTO Y RECREACIÓN</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_18" model="l10n_xma.economic_activity">
+        <field name="code">S</field>
+        <field name="name">OTRAS ACTIVIDADES DE SERVICIOS</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_19" model="l10n_xma.economic_activity">
+        <field name="code">T</field>
+        <field name="name">ACTIVIDADES DE LOS HOGARES COMO EMPLEADORES DE PERSONAL DOMÉSTICO</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    <record id="l10n_xma_economic_activity_20" model="l10n_xma.economic_activity">
+        <field name="code">U</field>
+        <field name="name">ACTIVIDADES DE ORGANIZACIONES Y ORGANISMOS EXTRATERRITORIALES</field>
+        <field name="comments"></field>
+        <field name="country_id">185</field>
+    </record>
+    
+
+</odoo>

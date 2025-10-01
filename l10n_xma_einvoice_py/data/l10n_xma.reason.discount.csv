@@ -1,0 +1,9 @@
+id,code,name,country_id
+reason_dis_py01,1,"Devolución y Ajuste de precios","PY"
+reason_dis_py02,2,"Devolución","PY"
+reason_dis_py03,3,"Descuento","PY"
+reason_dis_py04,4,"Bonificación","PY"
+reason_dis_py05,5,"Crédito incobrable","PY"
+reason_dis_py06,6,"Recupero de costo","PY"
+reason_dis_py07,7,"Recupero de gasto","PY"
+reason_dis_py08,8,"Ajuste de precio","PY"

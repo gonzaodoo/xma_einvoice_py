@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <template id="report_invoice_document_py">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+
+                <t t-set="lang" t-value="o.partner_id.lang" />
+                <t t-if="not o" t-set="o" t-value="doc" />
+
+                <t t-if="not company">
+                    <!-- Multicompany -->
+                    <t t-if="company_id">
+                        <t t-set="company" t-value="company_id" />
+                    </t>
+                    <t t-elif="o and 'company_id' in o and o.company_id.sudo()">
+                        <t t-set="company" t-value="o.company_id.sudo()" />
+                    </t>
+                    <t t-else="else">
+                        <t t-set="company" t-value="res_company" />
+                    </t>
+                </t>
+                <div t-attf-class="header o_company_#{company.id}_layout"
+                    t-att-style="report_header_style">
+                    <div class="row">
+                        <div class="col-3 mb4">
+                            <img t-if="company.logo" t-att-src="image_data_uri(company.logo)"
+                                style="max-height: 45px;" alt="Logo" />
+                        </div>
+                        <div class="col-9 text-end" style="margin-top:22px;"
+                            t-field="company.report_header" name="moto" />
+                    </div>
+                    <div t-if="company.logo or company.report_header" class="row zero_min_height">
+                        <div class="col-12">
+                            <div style="border-bottom: 1px solid black;" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6" name="company_address">
+                            <div>
+                                <strong>Sistema Integrado de Facturación Electrónica Nacional</strong>
+                            </div>
+                            <div>
+                                <span t-esc='o.company_id.partner_id.contact_address' />
+                            </div>
+                            <div>
+                                <span>Ciudad:</span>
+                                <t t-esc="o.company_id.partner_id.l10n_xma_city_id.name" />
+                            </div>
+                            <span>Actividades económicas:</span>
+                            <br />
+                            <t t-foreach="o.company_id.l10n_xma_economic_activity_campany_id"
+                                t-as="ae">
+                                <t style="font-size:7px;" t-esc="ae.name" />
+                                <br />
+                            </t>
+                        </div>
+                        <!-- <div class="col-2"></div> -->
+                        <t t-if="o.partner_id">
+                            <div class="col-6" style="margin-left: 10pt;">
+                                <div>
+                                    <span>RUC: </span> <t t-esc="o.company_id.vat" /> - <t
+                                        t-esc="o.company_id.partner_id.l10n_xma_control_digit" />
+                                </div>
+                                <div>
+                                    <span>N° Timbrado: </span>
+                                    <t
+                                        t-esc="o.l10n_latam_document_type_id.l10n_xma_authorization_code" />
+                                </div>
+                                <div>
+                                    <span>Fecha de inicio de Vigencia: </span>
+                                    <t t-esc="o.company_id.start_date_post" />
+                                </div>
+                                <br />
+                                <br />
+                                <br />
+                                <h4>
+                                    <strong>
+                                        <t t-esc="o.l10n_latam_document_type_id.report_name" />
+                                    </strong>
+                                </h4>
+                                <span><t t-esc="o.l10n_latam_document_type_id.l10n_xma_branch" /> - <t
+                                        t-esc="o.l10n_latam_document_type_id.l10n_xma_dispatch_point" />
+                                    - <t t-esc="o.name" /></span>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <!-- <t t-call="web.external_layout"> -->
+                <meta charset="utf-8" />
+                <div class="mt-5">
+                    <div class="page">
+                        <div class="row">
+                            <t t-if="o.l10n_xma_uuid_invoice">
+                                <t t-set="xml" t-value="o.edi_get_xml_etree_py()" />
+                                <t t-set="field_qr" t-value="o.generate_qr(xml)" />
+                            </t>
+                            <table border="0" cellpadding="10" cellspacing="0" width="100%">
+                                <TR>
+                                    <TD width="50%">
+                                        <span style="font-size:12pt;">Fecha y hora de emisión: </span>
+                                        <strong style="font-size:11pt;">
+                                            <span t-field="o.l10n_xma_date_post" t-options="{'widget':'datetime'}"/>
+                                        </strong>
+                                        <br />
+                                        <span style="font-size:12pt;">Condición de venta: </span>
+                                        <strong style="font-size:11pt;">
+                                            <t t-if="o.l10n_xma_payment_term == 'cash'">
+                                                <span> Contado</span>
+                                            </t>
+                                            <t t-if="o.l10n_xma_payment_term == 'credit'">
+                                                <span> Crédito</span>
+                                            </t>
+                                        </strong>
+                                        <br />
+                                        <t t-if="o.l10n_xma_payment_term == 'credit'">
+                                            <span style="font-size:12pt;">Cuotas: </span>
+                                            <t t-esc="o.l10n_xma_number_subscription" />
+                                            <br />
+                                        </t>
+                                        <span style="font-size:12pt;text-align:right;">Moneda: </span>
+                                        <strong>
+                                            <t t-esc="o.currency_id.name" style="font-size:12pt;" />
+                                        </strong>
+                                        <t t-if="o.currency_id.id != 157">
+                                            <span style="font-size:12pt;text-align:left;"> Tipo de
+                                                Cambio: </span>
+                                            <br />
+                                            <span style="font-size:12pt;">Tipo de cambio global o
+                                                por
+                                                item</span>
+                                        </t>
+                                        <t t-if="o.l10n_latam_document_type_id.code in ('5','6')">
+                                            <br />
+                                            <span>Documento asociado CDC o preimpreso: <t
+                                                    t-esc="o.l10n_xma_cdc_asociado" /></span>
+                                            <br />
+                                            <t t-set="tipo_doc_asociado" t-value="" />
+                                            <t t-if="o.l10n_xma_tipo_doc_asociado == '1'">
+                                                <t t-set="tipo_doc_asociado" t-value="'Electrónico'" />
+                                            </t>
+                                            <t t-if="o.l10n_xma_tipo_doc_asociado == '2'">
+                                                <t t-set="tipo_doc_asociado" t-value="'Impreso'" />
+                                            </t>
+                                            <t t-if="o.l10n_xma_tipo_doc_asociado == '3'">
+                                                <t t-set="tipo_doc_asociado"
+                                                    t-value="'Constancia Electrónica'" />
+                                            </t>
+                                            <span style="font-size:12pt;">Tipo de documento
+                                                asociado: <t
+                                                    t-esc="tipo_doc_asociado" /></span>
+                                        </t>
+
+                                    </TD>
+                                    <TD width="50%">
+                                        <span style="font-size:12pt;">Ruc/Documento de indentidad
+                                            No: </span>
+                                        <strong style="font-size:11pt;">
+                                            <t t-esc="o.partner_id.vat" />
+                                            <span>-</span>
+                                            <t t-esc="o.partner_id.l10n_xma_control_digit" />
+                                        </strong>
+                                        <br />
+                                        <span style="font-size:12pt;">Nombre o Razón Social: </span>
+                                        <strong style="font-size:11pt;">
+                                            <t t-esc="o.partner_id.name" />
+                                        </strong>
+                                        <br />
+                                        <span style="font-size:12pt;">Dirección: </span>
+                                        <strong style="font-size:11pt;">
+                                            <t t-esc="o.partner_id.contact_address" />
+                                        </strong>
+                                        <br />
+                                        <span style="font-size:12pt;">Teléfono: </span>
+                                        <strong style="font-size:11pt;">
+                                            <t t-esc="o.partner_id.phone" />
+                                        </strong>
+                                        <br />
+                                        <span style="font-size:12pt;">Correo Electrónico: </span>
+                                        <strong style="font-size:11pt;">
+                                            <t t-esc="o.partner_id.email" />
+                                        </strong>
+                                        <br />
+                                        <span style="font-size:12pt;">Tipo de Transacción: </span>
+                                        <strong style="font-size:11pt;">
+                                            <t t-esc="o.l10n_xma_use_document_id.name" />
+                                        </strong>
+                                        <br />
+                                        <!-- <span style="font-size:12pt;">Motivo de la emision:
+                                        </span><br/> -->
+                                    </TD>
+                                </TR>
+                            </table>
+                            <br />
+                            <table border="1" cellpadding="10" cellspacing="0" width="100%"
+                                style="line-height:1;background-color:#e9f0ef;"
+                                bordercolor="#e9f0ef">
+                                <tr>
+                                    <td width="9%" style="font-size:10pt;">Código</td>
+                                    <td width="25%" style="font-size:10pt;">Descripción</td>
+                                    <td width="11%" style="font-size:10pt;text-align:center;">Unidad
+                                        de medida</td>
+                                    <td width="10%" style="font-size:10pt;">Cantidad</td>
+                                    <td width="11%" style="font-size:10pt;">Precio Unitario</td>
+                                    <td width="10%" style="font-size:10pt;">Descuento</td>
+                                    <td width="24%" style="font-size:10pt;text-align:center;">Valor
+                                        de Venta</td>
+                                </tr>
+                            </table>
+                            <table border="1" cellpadding="10" cellspacing="0" width="100%" style="line-height:.10;" bordercolor="#e9f0ef">
+                                <tr style="background-color:#e9f0ef;">
+                                    <td width="9%"/>
+                                    <td width="25%"/>
+                                    <td width="11%"/>
+                                    <td width="10%"/>
+                                    <td width="11%"/>
+                                    <td width="15%"/>
+                                    <td width="9%" style="font-size:10pt;">Iva</td>
+                                    <td width="10%" style="font-size:10pt;">Valor total</td>
+                                </tr>
+                                <t t-foreach="o.invoice_line_ids" t-as="line">
+                                    <tr bordercolor="#fff" style="line-height:1;">
+                                        <td width="9%" style="font-size:10pt;">
+                                            <t t-esc="line.product_id.default_code"/>
+                                        </td>
+                                        <td width="25%" style="font-size:10pt;">
+                                            <t t-esc="line.name"/>
+                                        </td>
+                                        <td width="11%" style="font-size:10pt;">
+                                            <t t-esc="line.product_id.uom_id.l10n_xma_uomcode_id.name"/>
+                                        </td>
+                                        <td width="10%" style="text-align:right; font-size:10pt;">
+                                            <t t-esc="line.quantity"/>
+                                        </td>
+                                        <td width="11%" style="text-align:right; font-size:10pt;">
+                                            <t t-esc="'{0:,.2f}'.format(line.price_unit).replace('.', '#').replace(',', '.').replace('#', ',')"/>
+                                        </td>
+                                        <td width="10%" style="text-align:right; font-size:10pt;">
+                                            <t t-esc="line.discount"/>
+                                        </td>
+                                        <t t-set="taxes" t-value="', '.join([(tax.invoice_label or tax.name) for tax in line.tax_ids])"/>
+                                        <td width="9%" style="text-align:left; font-size:10pt;">
+                                            <t t-esc="taxes"/>
+                                        </td>
+                                        <td width="9%" style="text-align:left; font-size:10pt;">
+                                            <t t-esc="'{0:,.2f}'.format(line.price_subtotal).replace('.', '#').replace(',', '.').replace('#', ',')"/>
+                                        </td>
+                                    </tr>
+                                </t>
+                            </table>
+                            <table border="1" cellpadding="10" cellspacing="0" width="100%"
+                                style="line-height:.10;background-color:#fff;" bordercolor="#e9f0ef">
+                                <tr style="line-height:5;" bordercolor="#fff">
+                                    <td width="76%" style="font-size:10pt;"></td>
+                                    <td width="9%"></td>
+                                    <td width="6%"></td>
+                                    <td width="9%"></td>
+                                </tr>
+                            </table>
+                            <table border="1" cellpadding="10" cellspacing="0" width="100%"
+                                style="line-height:.10;background-color:#e9f0ef;"
+                                bordercolor="#e9f0ef">
+                                <tr style="line-height:.10;">
+                                    <td width="76%">SUBTOTAL:</td>
+                                    <td width="9%"></td>
+                                    <td width="6%"></td>
+                                    <td width="9%">
+                                        <t t-esc="'{0:,.2f}'.format(o.amount_untaxed).replace('.', '#').replace(',', '.').replace('#', ',')" />
+                                    </td>
+                                </tr>
+                                <tr style="line-height:.10;">
+                                    <td width="76%">TOTAL DE LA OPERACIÓN:</td>
+                                    <td width="9%"></td>
+                                    <td width="6%"></td>
+                                    <td width="9%">
+                                        <t t-esc="'{0:,.2f}'.format(o.amount_total).replace('.', '#').replace(',', '.').replace('#', ',')" />
+                                    </td>
+                                </tr>
+                                <tr style="line-height:.10;">
+                                    <td width="76%">TOTAL EN GUARANÍES:</td>
+                                    <td width="9%"></td>
+                                    <td width="6%"></td>
+                                    <td width="9%">
+                                        <t t-esc="'{0:,.2f}'.format(o.amount_total).replace('.', '#').replace(',', '.').replace('#', ',')" />
+                                    </td>
+                                </tr>
+
+                            </table>
+                            <table border="1" cellpadding="10" cellspacing="0" width="100%"
+                                style="line-height:.10;background-color:#e9f0ef;"
+                                bordercolor="#e9f0ef">
+                                <tr style="line-height:.10;">
+                                    <t t-set="taxes_total"
+                                        t-value="o.amount_total - o.amount_untaxed" />
+                                    <td width="25%">LIQUIDACIÓN IVA:</td>
+                                    <td width="17%">(5%)</td>
+                                    <td width="10%">(10%)</td>
+                                    <td width="18%">
+                                        <t t-esc="'{0:,.2f}'.format(taxes_total).replace('.', '#').replace(',', '.').replace('#', ',')" />
+                                    </td>
+                                    <td width="21%">TOTAL IVA:</td>
+                                    <td width="9%">
+                                        <t t-esc="'{0:,.2f}'.format(taxes_total).replace('.', '#').replace(',', '.').replace('#', ',')" />
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <br />
+
+                            <!-- <t t-set="xml" t-value="edi_get_tfd_etree_py(value)"/> -->
+                            <t t-set="url" t-value="'https://ekuatia.set.gov.py/consultas-test/qr?'" />
+                            <t t-set="version" t-value="'150'" />
+                            <t t-set="id" t-value="'01800557492001001000000622023082510000004800'" />
+                            <t t-set="fecha" t-value="'323032332d30382d32355431333a30303a3039'" />
+                            <t t-set="ruc_rec" t-value="'5448675'" />
+                            <t t-set="total_grav" t-value="'11000.00000000'" />
+                            <t t-set="total_iva" t-value="'1000.00000000'" />
+                            <t t-set="items" t-value="'1'" />
+                            <t t-set="d_value"
+                                t-value="'4e736f72484b643735486e487948644b2b6f51676d5350366b70303d'" />
+                            <t t-set="id_csc" t-value="'0001'" />
+                            <t t-set="hash_qr"
+                                t-value="'e74085047e3daf93268d23f8e5b850301a4ee761241da4051cd1a0d496eb336e'" />
+
+                            <t t-set="complete_url"
+                                t-value="url+'nVersion='+version+'&amp;'+'dFeEmiDE='+fecha+'&amp;'+'dRucRec='+ruc_rec+'&amp;'+'dTotGralOpe='+total_grav+'&amp;'+'dTotIVA='+total_iva+'&amp;'+'cItems='+items+'&amp;'+'DigestValue='+d_value+'&amp;'+'IdCSC='+id_csc+'&amp;'+'cHashQR='+hash_qr" />
+                            <div class="col-2">
+                                <div style="float:left;">
+                                    <t t-if="field_qr">
+                                        <img t-attf-src="data:image/*;base64,{{field_qr}}"
+                                            style="height:110px; width:110px;" />
+                                    </t>
+                                </div>
+                                <div style="float:right;margin-right:50px">
+                                    <span style="font-size:12pt;">
+
+                                        Consulte la validez de esta Factura Electrónica con el
+                                        numero CDC impreso abajo en:
+                                    </span>
+                                    <br />
+                                    <span>
+                                        <a href="#">https://ekuatia.set.gov.py/consultas/qr</a>
+                                    </span>
+                                    <t t-set="cdc" t-value="o.generate_cdc()" />
+                                    <h3 style="text-align:center;">CDC: <t t-esc="cdc" /></h3>
+                                </div>
+                            </div>
+                            <br />
+                        </div>
+                    </div>
+                    <div style="font-size:12pt;margin-top:100px;">
+                        <span>
+                            ESTE DOCUMENTO ES UNA REPRESENTACIÓN GRÁFICA DE UN DOCUMENTO ELECTRÓNICO
+                            (XML)
+                        </span>
+                        <br />
+                        <span>
+                            <strong>Información de interés del facturador electrónico emisor.</strong>
+                        </span>
+                        <br />
+                        <span>
+                            Si su documento electrónico presenta algun error, podrá solicitar la
+                            modificación dentro de las
+                            72 horas siguientes de la emisión de este comprobante
+                        </span>
+                    </div>
+
+                    <!-- <t t-if="not o" t-set="o" t-value="doc"/>
+                <t t-if="not company">
+                    <t t-if="company_id">
+                        <t t-set="company" t-value="company_id"/>
+                    </t>
+                    <t t-elif="o and 'company_id' in o">
+                        <t t-set="company" t-value="o.company_id.sudo()"/>
+                    </t>
+                    <t t-else="else">
+                        <t t-set="company" t-value="res_company"/>
+                    </t>
+                </t> -->
+                </div>
+            </t>
+            <!-- </t> -->
+        </t>
+    </template>
+    <record id="paperformat_paraguay_report" model="report.paperformat">
+        <field name="name">Paraguay</field>
+        <field name="default" eval="False" />
+        <field name="format">Letter</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">10</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">10</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False" />
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+    <record id="action_report_paraguay_invoice_document" model="ir.actions.report">
+        <field name="name">Factura de paraguay</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">l10n_xma_einvoice_py.report_invoice_document_py</field>
+        <field name="report_file">l10n_xma_einvoice_py.report_invoice_document_py</field>
+        <field name="binding_model_id" ref="account.model_account_move" />
+        <field name="paperformat_id" ref="paperformat_paraguay_report" />
+    </record>
+</odoo>

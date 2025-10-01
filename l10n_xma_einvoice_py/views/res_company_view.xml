@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="inherit_view_id_inherit_res_company" model="ir.ui.view">
+        <field name="name">res.company.view.form.inherit</field>
+        <field name="model">res.company</field>
+        <field name="inherit_id" ref="base.view_company_form"/>
+        <field name="arch" type="xml">
+            <field name="currency_id" position="after">
+                <field name="start_date_post"/>
+                <field name="l10n_xma_integration_code"/>
+                <field name="l10n_xma_access_key"/>
+            </field>
+            <xpath expr="//page[1]" position="after">
+                <page string="actividades económicas" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin">
+                <!--label for="l10n_xma_economic_activity_campany_id" string="Regímen Fiscal" style="font-weight:bold;"/-->
+                    <field name="l10n_xma_economic_activity_campany_id">
+                        <list editable="bottom">
+                            <field name="name"/>
+                            <field name="code"/>
+                        </list>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+    </data>
+</odoo>

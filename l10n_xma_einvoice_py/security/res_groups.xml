@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="l10n_xma_invoice_py_admin" model="res.groups">
+        <field name="name">Facturación Paraguay Administrador</field>
+    </record>
+
+    <record id="l10n_xma_invoice_py_user" model="res.groups">
+        <field name="name">Facturación Paraguay Usuario</field>
+    </record>
+
+</odoo>

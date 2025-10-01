@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="0">
+
+    <record id="l10n_latam_py_identification_0" model="l10n_latam.identification.type">
+        <field name="name">1</field>
+        <field name="description">Cédula paraguaya</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_latam_py_identification_1" model="l10n_latam.identification.type">
+        <field name="name">2</field>
+        <field name="description">Pasaporte</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_latam_py_identification_2" model="l10n_latam.identification.type">
+        <field name="name">3</field>
+        <field name="description">Cédula extranjera</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_latam_py_identification_3" model="l10n_latam.identification.type">
+        <field name="name">4</field>
+        <field name="description">Carnet de residencia</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_latam_py_identification_4" model="l10n_latam.identification.type">
+        <field name="name">5</field>
+        <field name="description">Innominado</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_latam_py_identification_5" model="l10n_latam.identification.type">
+        <field name="name">6</field>
+        <field name="description">Tarjeta diplomática de exoneración fiscal</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_latam_py_identification_6" model="l10n_latam.identification.type">
+        <field name="name">9</field>
+        <field name="description">Otro</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    
+
+</odoo>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+    <record id="l10n_layam_invoice_doc_0" model="l10n_latam.document.type">
+        <field name="code">1</field>
+        <field name="name">Factura Electrónica</field>
+        <field name="doc_code_prefix">EINV</field>
+        <field name="report_name">EINV</field>
+        <field name="internal_type">invoice</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_layam_invoice_doc_1" model="l10n_latam.document.type">
+        <field name="code">2</field>
+        <field name="name">Factura electrónica de exportación (Futuro)</field>
+        <field name="doc_code_prefix">EINVE</field>
+        <field name="report_name">EINVE</field>
+        <field name="internal_type">invoice</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_layam_invoice_doc_2" model="l10n_latam.document.type">
+        <field name="code">3</field>
+        <field name="name">Factura electrónica de importación (Futuro)</field>
+        <field name="doc_code_prefix">EINVI</field>
+        <field name="report_name">EINVI</field>
+        <field name="internal_type">invoice</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_layam_invoice_doc_3" model="l10n_latam.document.type">
+        <field name="code">4</field>
+        <field name="name">Autofactura electrónica</field>
+        <field name="doc_code_prefix">AEINV</field>
+        <field name="report_name">AEINV</field>
+        <field name="internal_type">invoice</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_layam_invoice_doc_4" model="l10n_latam.document.type">
+        <field name="code">5</field>
+        <field name="name">Nota de crédito electrónica</field>
+        <field name="doc_code_prefix">ECN</field>
+        <field name="report_name">ECN</field>
+        <field name="internal_type">credit_note</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_layam_invoice_doc_5" model="l10n_latam.document.type">
+        <field name="code">6</field>
+        <field name="name">Nota de débito electrónica</field>
+        <field name="doc_code_prefix">EDN</field>
+        <field name="report_name">EDN</field>
+        <field name="internal_type">debit_note</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_layam_invoice_doc_6" model="l10n_latam.document.type">
+        <field name="code">7</field>
+        <field name="name">Nota de remisión electrónica</field>
+        <field name="doc_code_prefix">ENR</field>
+        <field name="report_name">ENR</field>
+        <field name="internal_type">receipt_invoice</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    <record id="l10n_layam_invoice_doc_7" model="l10n_latam.document.type">
+        <field name="code">8</field>
+        <field name="name">Comprobante de retención</field>
+        <field name="doc_code_prefix">ECR</field>
+        <field name="report_name">ECR</field>
+        <field name="internal_type">invoice</field>
+        <field name="country_id">185</field>
+        <field name="active">1</field>
+    </record>
+    
+
+</odoo>

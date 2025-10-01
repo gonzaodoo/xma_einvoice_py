@@ -1,0 +1,775 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="view_document_type_form" model="ir.ui.view">
+        <field name="name">l10n_latam.document.type.form</field>
+        <field name="model">l10n_latam.document.type</field>
+        <field name="inherit_id" ref="l10n_latam_invoice_document.view_document_type_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="replace">
+                <form string="Document Type" create="1" edit="1">
+                  <group name="document_type" string="Tipo de documentos">
+                    <group>
+                        <field name="code"/>
+                        <field name="name"/>
+                        <field name="doc_code_prefix"/>
+                        <field name="report_name"/>
+                        <field name="internal_type"/>
+                        <field name="country_id"/>
+                        <field name="l10n_xma_authorization_code" string="Número de timbrado" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                        <field name="l10n_xma_branch" string="Establecimiento" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                        <field name="l10n_xma_dispatch_point" string="Punto de expedición" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                        <field name="l10n_xma_sequence_start" string="Secuencia Inicia en" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>                   
+                        <field name="l10n_xma_sequence_end" string="Secuencia finaliza en" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                    </group>
+                    <group>
+                      <field name="l10n_xma_transaction_type"/>
+                      <field name="journal_id"
+                          string="Diario"
+                          />
+                      <field name="l10n_xma_date_start"
+                          string="Fecha de inicio"
+                          />
+                      <field name="l10n_xma_date_end"
+                          string="Fecha hasta"
+                          />
+                      <field name="l10n_xma_current_number"
+                          string="No. Actual" readonly="1" force_save="1"
+                          />
+                      <field name="l10n_xma_next_number"
+                          string="Siguiente numero" readonly="1" force_save="1"
+                          />
+                      <field name="l10n_xma_resequence_document" 
+                          string="Resecuenciar documento"
+                          />
+                      <field name="active" widget="boolean_toggle" />
+                  </group>
+                  </group>
+                </form>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- <record id="inherit_view_id_inherit_l10n_latam_document_type" model="ir.ui.view">
+        <field name="name">l10n_latam.document.type.view.form.inherit</field>
+        <field name="model">l10n_latam.document.type</field>
+        <field name="inherit_id" ref="l10n_latam_invoice_document.view_document_type_form"/>
+        <field name="arch" type="xml">
+            <field name="internal_type" position="before">
+                <field name="l10n_xma_authorization_code" string="Número de timbrado" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+            
+                <field name="l10n_xma_branch" string="Establecimiento" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+            
+                <field name="l10n_xma_dispatch_point" string="Punto de expedición" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+            
+                <field name="l10n_xma_sequence_start" string="Secuencia Inicia en" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+            
+                <field name="l10n_xma_sequence_end" string="Secuencia finaliza en" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+            </field>
+        </field>
+    </record> -->
+    <!-- <record id="uom_uom_form" model="ir.ui.view">
+        <field name="name">uom.uom.form.inherit</field>
+        <field name="model">uom.category</field>
+        <field name="inherit_id" ref="uom.product_uom_categ_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook/page[1]/field[1]/list[1]/field[@name='uom_type']" position="before">
+                <field name="l10n_xma_py_uomcode"/>
+            </xpath>
+        </field>
+    </record> -->
+
+    <!-- <record id="product_product_form_inherit_xma" model="ir.ui.view">
+        <field name="name">product.product.form_inherit</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view" />
+        <field name="arch" type="xml">
+           <page name="invoicing" position="inside">
+                <group>
+                    <group name="xma_invoive" string="Código Unidad de medida">
+                        <field name="l10n_xma_productcode_id"/>
+                    </group>
+                </group>
+            </page>
+        </field>
+    </record> -->
+<!-- 
+    <record id="product_tmpl_form_inherit_xma" model="ir.ui.view">
+        <field name="name">product.tmpl.form_inherit</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view" />
+        <field name="arch" type="xml">
+           <page name="invoicing" position="inside">
+                <group>
+                    <group name="xma_invoive" string="Código del SAT">
+                        <field name="l10n_xma_productcode_id"/>
+                    </group>
+                </group>
+            </page>
+        </field>
+    </record> -->
+
+
+    <record id="l10n_xma_py_uom_code_form" model="ir.ui.view">
+      <field name="name">l10n_xma_py_code.form</field>
+      <field name="model">l10n_xma.uomcode</field>
+      <field name="arch" type="xml">
+        <form string="Codigo unidad de medida">
+          <header>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="code"/>
+              </group>
+              <group>
+                <field name="country_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_uom_code_list" model="ir.ui.view">
+      <field name="name">l10n_xma_py_sat_code.form</field>
+      <field name="model">l10n_xma.uomcode</field>
+      <field name="arch" type="xml">
+        <list string="Codigo unidad de medida">
+          <field name="name"/>
+          <field name="code"/>
+          <field name="country_id"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_uom_code_action" model="ir.actions.act_window">
+      <field name="name">Code unite</field>
+      <field name="res_model">l10n_xma.uomcode</field>
+      <field name="view_mode">list,form</field>
+      <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+              Crear
+          </p>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_sat_code_form" model="ir.ui.view">
+      <field name="name">l10n_xma_py_sat_code.form</field>
+      <field name="model">l10n_xma.productcode</field>
+      <field name="arch" type="xml">
+        <form string="Codigo sat del producto">
+          <header>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="code"/>
+              </group>
+              <group>
+                <field name="country_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_sat_code_list" model="ir.ui.view">
+      <field name="name">l10n_xma_py_sat_code.form</field>
+      <field name="model">l10n_xma.productcode</field>
+      <field name="arch" type="xml">
+        <list string="Product Code">
+          <field name="name"/>
+          <field name="code"/>
+          <field name="country_id"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_sat_code_action" model="ir.actions.act_window">
+      <field name="name">Codigo Sat del producto</field>
+      <field name="res_model">l10n_xma.productcode</field>
+      <field name="view_mode">list,form</field>
+      <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+              Crear
+          </p>
+      </field>
+    </record>
+
+    <!-- <record id="l10n_xma_py_uom_uom_form" model="ir.ui.view">
+      <field name="name">l10n_xma_py_uom_uom.form</field>
+      <field name="model">uom.uom</field>
+      <field name="arch" type="xml">
+        <form string="Unidades de medida">
+                <sheet>
+                    <group>
+                         <group name="uom_details">
+                             <field name="name"/>
+                             <field name="category_id"/>
+                             <field name="uom_type"/>
+                             <field name="l10n_xma_py_uomcode"/>
+                             <label for="factor" attrs="{'invisible':[('uom_type','!=','smaller')]}"/>
+                            <div attrs="{'invisible':[('uom_type','!=','smaller')]}">
+                                <field name="factor" digits="[42,5]" attrs="{'readonly':[('uom_type','=','bigger')]}"/>
+                                <span class="oe_grey oe_inline">
+                                    e.g: 1*(reference unit)=ratio*(this unit)
+                                </span>
+                            </div>
+                            <label for="factor_inv" attrs="{'invisible':[('uom_type','!=','bigger')]}"/>                           
+                            <div attrs="{'invisible':[('uom_type','!=','bigger')]}">
+                                <field name="factor_inv" digits="[42,5]" attrs="{'readonly':[('uom_type','!=','bigger')]}"/>
+                                <span class="oe_grey oe_inline">
+                                    e.g: 1*(this unit)=ratio*(reference unit)
+                                </span>
+                            </div>
+                         </group>
+                         <group name="active_rounding">
+                             <field name="active" widget="boolean_toggle"/>
+                             <field name="rounding" digits="[42, 5]"/>
+
+                         </group>
+                     </group>
+                </sheet>
+            </form>
+      </field>
+    </record> -->
+<!-- 
+    <record id="l10n_xma_py_uom_uom_list" model="ir.ui.view">
+      <field name="name">l10n_xma_py_uom_uom.form</field>
+      <field name="model">uom.uom</field>
+      <field name="arch" type="xml">
+        <list string="Unidades de medida"></list>
+          <field name="name"/>
+          <field name="category_id"/>
+          <field name="uom_type"/>
+        </list>
+      </field>
+    </record> -->
+
+    <!-- <record id="l10n_xma_py_uom_uom_action" model="ir.actions.act_window">
+      <field name="name">Unidades de Media</field>
+      <field name="res_model">uom.uom</field>
+      <field name="view_mode">list,form</field>
+      <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+              Crear
+          </p>
+      </field>
+    </record> -->
+    <record id="l10n_latam_document_type_view_form_py" model="ir.ui.view">
+        <field name="name">l10n_latam_document_type.view.form</field>
+        <field name="model">l10n_latam.document.type</field>
+        <field name="arch" type="xml">
+            <form string="Document Type">
+                <group>
+                    <field name="code"/>
+                    <field name="name"/>
+                    <field name="doc_code_prefix"/>
+                    <field name="report_name"/>
+                    <field name="internal_type"/>
+                    <field name="country_id"/>
+                    <field name="l10n_xma_authorization_code" string="Número de timbrado" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+        
+                    <field name="l10n_xma_branch" string="Establecimiento" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                
+                    <field name="l10n_xma_dispatch_point" string="Punto de expedición" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                
+                    <field name="l10n_xma_sequence_start" string="Secuencia Inicia en" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                
+                    <field name="l10n_xma_sequence_end" string="Secuencia finaliza en" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="l10n_latam_document_type_view_list" model="ir.ui.view">
+        <field name="name">l10n_latam_document_type.view.list</field>
+        <field name="model">l10n_latam.document.type</field>
+        <field name="arch" type="xml">
+            <list string="Tipo de Documento" create="1" edit="1">
+                <field name="code"/>
+                    <field name="name"/>
+                    <field name="doc_code_prefix"/>
+                    <field name="report_name"/>
+                    <field name="internal_type"/>
+                    <field name="country_id"/>
+                    <field name="l10n_xma_authorization_code" string="Número de timbrado" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+        
+                    <field name="l10n_xma_branch" string="Establecimiento" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                
+                    <field name="l10n_xma_dispatch_point" string="Punto de expedición" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                
+                    <field name="l10n_xma_sequence_start" string="Secuencia Inicia en" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                
+                    <field name="l10n_xma_sequence_end" string="Secuencia finaliza en" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="l10n_xma_py_document_action" model="ir.actions.act_window">
+        <field name="name">l10n_latam_document_type.view.list</field>
+        <field name="res_model">l10n_latam.document.type</field>
+        <field name="view_mode">list,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crear
+            </p>
+        </field>
+      </record>
+
+    <record id="l10n_xma_py_taxpeyer_form" model="ir.ui.view">
+      <field name="name">l10n_xma_py_taxpayer.form</field>
+      <field name="model">l10n_xma.taxpayer_type</field>
+      <field name="arch" type="xml">
+        <form string="Regimen Fiscal">
+          <header>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="code"/>
+              </group>
+              <group>
+                <field name="country_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_taxpayer_list" model="ir.ui.view">
+      <field name="name">l10n_xma_py_taxpayer.form</field>
+      <field name="model">l10n_xma.taxpayer_type</field>
+      <field name="arch" type="xml">
+        <list string="Regimen Fiscal">
+          <field name="name"/>
+          <field name="code"/>
+          <field name="country_id"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_taxpayer_action" model="ir.actions.act_window">
+      <field name="name">Regimen Fiscal</field>
+      <field name="res_model">l10n_xma.taxpayer_type</field>
+      <field name="view_mode">list,form</field>
+      <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+              Crear
+          </p>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_issuance_form" model="ir.ui.view">
+      <field name="name">l10n_xma_py_issuance.form</field>
+      <field name="model">l10n_xma.issuance_type</field>
+      <field name="arch" type="xml">
+        <form string="Tipo de Emision">
+          <header>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="code"/>
+              </group>
+              <group>
+                <field name="comments"/>
+                <field name="country_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_issuance_list" model="ir.ui.view">
+      <field name="name">l10n_xma_py_issuance.form</field>
+      <field name="model">l10n_xma.issuance_type</field>
+      <field name="arch" type="xml">
+        <list string="Tipo de Emision">
+          <field name="code"/>
+          <field name="name"/>
+          <field name="country_id"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_issuance_action" model="ir.actions.act_window">
+      <field name="name">Tipo de Emision</field>
+      <field name="res_model">l10n_xma.issuance_type</field>
+      <field name="view_mode">list,form</field>
+      <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+              Crear
+          </p>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_use_document_form" model="ir.ui.view">
+      <field name="name">l10n_xma_py_use_document.form</field>
+      <field name="model">l10n_xma.use.document</field>
+      <field name="arch" type="xml">
+        <form string="Tipo de Ingreso">
+          <header>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="code"/>
+              </group>
+              <group>
+                <field name="comments"/>
+                <field name="country_id"/>
+                <field name="l10n_xma_transaction_type"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_use_document_list" model="ir.ui.view">
+      <field name="name">l10n_xma_py_use_document.form</field>
+      <field name="model">l10n_xma.use.document</field>
+      <field name="arch" type="xml">
+        <list string="Tipo de Ingreso">
+          <field name="code"/>
+          <field name="name"/>
+          <field name="country_id"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_use_document_action" model="ir.actions.act_window">
+      <field name="name">Tipo de Ingreso</field>
+      <field name="res_model">l10n_xma.use.document</field>
+      <field name="view_mode">list,form</field>
+      <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+              Crear
+          </p>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_origin_operation_form" model="ir.ui.view">
+      <field name="name">l10n_xma.origin_operation.form</field>
+      <field name="model">l10n_xma.origin_operation</field>
+      <field name="arch" type="xml">
+        <form string="Origen de operacion">
+          <header>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="code"/>
+              </group>
+              <group>
+                <field name="comments"/>
+                <field name="country_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_origin_operation_list" model="ir.ui.view">
+      <field name="name">l10n_xma_py_origin_operation.form</field>
+      <field name="model">l10n_xma.origin_operation</field>
+      <field name="arch" type="xml">
+        <list string="Origen de operacion">
+          <field name="code"/>
+          <field name="name"/>
+          <field name="country_id"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_origin_operation_action" model="ir.actions.act_window">
+      <field name="name">Tipo de Ingreso</field>
+      <field name="res_model">l10n_xma.origin_operation</field>
+      <field name="view_mode">list,form</field>
+      <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+              Crear
+          </p>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_tax_type_form" model="ir.ui.view">
+      <field name="name">l10n_xma.tax_type.form</field>
+      <field name="model">l10n_xma.tax_type</field>
+      <field name="arch" type="xml">
+        <form string="Tipo de impuesto">
+          <header>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="code"/>
+              </group>
+              <group>
+                <field name="comments"/>
+                <field name="country_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_tax_type_list" model="ir.ui.view">
+      <field name="name">l10n_xma_py_tax_type.form</field>
+      <field name="model">l10n_xma.tax_type</field>
+      <field name="arch" type="xml">
+        <list string="Tipo de impuesto">
+          <field name="code"/>
+          <field name="name"/>
+          <field name="country_id"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_tax_type_action" model="ir.actions.act_window">
+      <field name="name">Tipo de impuesto</field>
+      <field name="res_model">l10n_xma.tax_type</field>
+      <field name="view_mode">list,form</field>
+      <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+              Crear
+          </p>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_xma_payment_form_form" model="ir.ui.view">
+      <field name="name">xma_payment.form</field>
+      <field name="model">xma_payment.form</field>
+      <field name="arch" type="xml">
+        <form string="Tipo de impuesto">
+          <header>
+          </header>
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="code"/>
+              </group>
+              <group>
+                <field name="comments"/>
+                <field name="country_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_xma_payment_form_list" model="ir.ui.view">
+      <field name="name">xma_payment.form</field>
+      <field name="model">xma_payment.form</field>
+      <field name="arch" type="xml">
+        <list string="Tipo de impuesto">
+          <field name="code"/>
+          <field name="name"/>
+          <field name="country_id"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="l10n_xma_py_xma_payment_form_action" model="ir.actions.act_window">
+      <field name="name">Tipo de impuesto</field>
+      <field name="res_model">xma_payment.form</field>
+      <field name="view_mode">list,form</field>
+      <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+              Crear
+          </p>
+      </field>
+    </record>
+
+    <record id="l10n_xma_municipality_view_form" model="ir.ui.view">
+      <field name="name">l10n_xma_municipality.view.form</field>
+      <field name="model">l10n_xma.municipality</field>
+      <field name="arch" type="xml">
+        <form string="Distrito">
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="code"/>
+              </group>
+              <group>
+                <field name="comments"/>
+                <field name="country_id"/>
+                <field name="state_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="l10n_xma_municipality_view_list" model="ir.ui.view">
+      <field name="name">l10n_xma_municipality.view.list</field>
+      <field name="model">l10n_xma.municipality</field>
+      <field name="arch" type="xml">
+        <list string="Distrito">
+          <field name="code"/>
+          <field name="name"/>
+          <field name="country_id"/>
+          <field name="state_id"/>
+        </list>
+      </field>
+    </record>
+    <record id="l10n_xma_municipality_action" model="ir.actions.act_window">
+      <field name="name">Distrito</field>
+      <field name="res_model">l10n_xma.municipality</field>
+      <field name="view_mode">list,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            Crear
+        </p>
+    </field>
+    </record>
+
+    <record id="l10n_xma_res_city_view_form" model="ir.ui.view">
+      <field name="name">l10n_xma_res_city.view.form</field>
+      <field name="model">res.city</field>
+      <field name="arch" type="xml">
+        <form string="Ciudad">
+          <sheet>
+            <group>
+              <group>
+                <field name="name"/>
+                <field name="zipcode"/>
+              </group>
+              <group>
+                <field name="country_id"/>
+                <field name="state_id"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="l10n_xma_res_city_view_list" model="ir.ui.view">
+      <field name="name">l10n_xma_res_city.view.list</field>
+      <field name="model">res.city</field>
+      <field name="arch" type="xml">
+        <list string="Ciudad">
+          <field name="zipcode"/>
+          <field name="name"/>
+          <field name="country_id"/>
+          <field name="state_id"/>
+        </list>
+      </field>
+    </record>
+
+    <record id="l10n_xma_res_city_action" model="ir.actions.act_window">
+      <field name="name">Ciudad</field>
+      <field name="res_model">res.city</field>
+      <field name="view_mode">list,form</field>
+      <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            Crear
+        </p>
+    </field>
+    </record>
+
+
+    <menuitem
+        id="l10n_xma_py_code_menu"
+        name="Configuracion Paraguay"
+        parent="account.menu_finance_configuration"
+        groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"
+        sequence="97" 
+
+        />
+    <menuitem
+        id="l10n_xma_py_taxpayer_submenu"
+        name="Regimen"
+        parent="l10n_xma_py_code_menu"
+        action="l10n_xma_py_taxpayer_action"
+        sequence="2"
+
+        />
+      <menuitem
+        id="l10n_xma_py_document_type_submenu"
+        name="Tipo de documentos"
+        parent="l10n_xma_py_code_menu"
+        action="l10n_xma_py_document_action"
+        sequence="3"
+        />
+      
+      <menuitem
+        id="l10n_xma_py_issuance_type_submenu"
+        name="Tipo de Emision"
+        parent="l10n_xma_py_code_menu"
+        action="l10n_xma_py_issuance_action"
+        sequence="4"
+        />
+      
+      <menuitem
+        id="l10n_xma_py_document_submenu"
+        name="Tipo de Ingreso"
+        parent="l10n_xma_py_code_menu"
+        action="l10n_xma_py_use_document_action"
+        sequence="5"
+        />
+      <menuitem
+        id="l10n_xma_py_origin_submenu"
+        name="Origen de la operacion"
+        parent="l10n_xma_py_code_menu"
+        action="l10n_xma_py_origin_operation_action"
+        sequence="6"
+        />
+      
+      <menuitem
+        id="l10n_xma_py_tax_type_submenu"
+        name="Tipo de impuesto"
+        parent="l10n_xma_py_code_menu"
+        action="l10n_xma_py_tax_type_action"
+        sequence="7"
+        />
+      <menuitem
+        id="l10n_xma_py_payment_form_submenu"
+        name="Forma de pago"
+        parent="l10n_xma_py_code_menu"
+        action="l10n_xma_py_xma_payment_form_action"
+        sequence="8"
+        />
+        <menuitem
+        id="l10n_xma_py_unite_code_submenu"
+        name="Codigo unidad de medida"
+        parent="l10n_xma_py_code_menu"
+        action="l10n_xma_py_uom_code_action"
+        sequence="9"
+        />
+        <menuitem
+        id="l10n_xma_py_municipality_submenu"
+        name="Distrito"
+        parent="l10n_xma_py_code_menu"
+        action="l10n_xma_municipality_action"
+        sequence="10"
+        />
+        <menuitem
+        id="l10n_xma_py_citys_submenu"
+        name="Ciudades"
+        parent="l10n_xma_py_code_menu"
+        action="l10n_xma_res_city_action"
+        sequence="11"
+        />
+        
+    </data>
+</odoo>

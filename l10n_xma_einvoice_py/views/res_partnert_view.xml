@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+    <record id="inherit_view_id_inherit_res_partner_xma_py" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//notebook" position='inside'>
+                <page string="Config Paraguay">
+                    <group>
+                        <group name="pyg" string="Config Paraguay">
+                            <field name="l10n_xma_taxpayer_type_id"/>
+                            <field name="commercial_name"/>
+                            <field name="l10n_xma_external_number"/>
+                            <field name="l10n_xma_internal_number"/>
+                            <field name="l10n_xma_city_id"/>
+                            <field name="l10n_xma_municipality_id" string="Distrito"/>
+                        </group>
+                    </group>
+                </page>
+            </xpath> -->
+            <field name="name" position="before">
+                <field name="commercial_name" string="Nombre de fantasía" invisible="country_id != 185" placeholder="Nombre de fantasía" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+            </field>
+
+            <field name="street" position="before">
+                <field name="l10n_xma_external_number" string="Número exterior del domicilio"
+                placeholder="Número exterior" invisible="country_id != 185" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                <field name="l10n_xma_internal_number" string="Número interior del domicilio"
+                placeholder="Número interior" invisible="country_id != 185" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+            </field>
+            <!-- <field name="C.P?" position="before">
+                <field name="l10n_xma_municipality_id" string="Distrito" placeholder="Distrito"/>
+            </field> -->
+            <field name="country_id" position="before">
+                <field name="l10n_xma_municipality_id" string="Distrito" invisible="country_id != 185" placeholder="Distrito"
+                domain="[('state_id', '=', state_id)]"
+                groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                <field name="l10n_xma_city_id" string="Ciudad" invisible="country_id != 185" placeholder="Ciudad" 
+                domain="[('state_id', '=', state_id)]"
+                groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+            </field>
+            <xpath expr="//page[1]" position="after">
+                <page string="Facturación electrónica" invisible="country_id != 185" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin">
+                <label for="l10n_xma_taxpayer_type_id" string="Regímen Fiscal" style="font-weight:bold;"/>
+                    <field name="l10n_xma_taxpayer_type_id" string="Regímen Fiscal"/>
+                </page>
+            </xpath>
+            <xpath expr="//form/sheet/group" position="inside">
+                <group name="l10n_xma_paraguay_fields">
+                    <group>
+                    <field name="l10n_xma_is_taxpayer" string="Es Contribuyente?" invisible="country_id != 185" placeholder="Naturaleza del cliente" help="Marcado es contribuyente, No marcado no es contribuyente" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                    <field name="l10n_xma_control_digit" string="Dígito de control del RUC" invisible="country_id != 185" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                    <field name="l10n_xma_customer_operation_type" string="Tipo de Operación" invisible="country_id != 185" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                    <field name="l10n_xma_indentification_type" invisible="country_id != 185" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                    <field name="l10n_xma_identification_number" invisible="country_id != 185" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/>
+                    </group>
+                </group>
+            </xpath>
+            <field name="ref" position="before"> 
+                <!-- <field name="l10n_xma_customer_operation_type" string="Tipo de operación" groups="l10n_xma_einvoice_py.l10n_xma_invoice_py_admin"/> -->
+            </field>
+        </field>
+    </record>
+    </data>
+</odoo>
