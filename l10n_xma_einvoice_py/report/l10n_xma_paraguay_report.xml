@@ -139,10 +139,11 @@
                                         <strong>
                                             <t t-esc="o.currency_id.name" style="font-size:12pt;" />
                                         </strong>
+                                        <t t-set="t_cambio" t-value="o.get_currency_rate()"/>
                                         <t t-if="o.currency_id.id != 157">
                                             <span style="font-size:12pt;text-align:left;"> Tipo de
-                                                Cambio: </span>
-                                            <br />
+                                                Cambio: </span> <span t-esc="t_cambio" />
+                                            <br /> 
                                             <span style="font-size:12pt;">Tipo de cambio global o
                                                 por
                                                 item</span>
@@ -298,7 +299,7 @@
                                     <td width="9%"></td>
                                     <td width="6%"></td>
                                     <td width="9%">
-                                        <t t-esc="'{0:,.2f}'.format(o.amount_total).replace('.', '#').replace(',', '.').replace('#', ',')" />
+                                        <t t-esc="'{0:,.2f}'.format(o.amount_total * t_cambio).replace('.', '#').replace(',', '.').replace('#', ',')" />
                                     </td>
                                 </tr>
 
