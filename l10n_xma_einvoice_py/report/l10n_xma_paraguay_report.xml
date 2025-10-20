@@ -112,6 +112,7 @@
                                 <t t-set="xml" t-value="o.edi_get_xml_etree_py()" />
                                 <t t-set="field_qr" t-value="o.generate_qr(xml)" />
                             </t>
+                            <t t-set="cdc" t-value="o.generate_cdc()" />
                             <table border="0" cellpadding="10" cellspacing="0" width="100%">
                                 <TR>
                                     <TD width="50%">
@@ -360,7 +361,7 @@
                                     <span>
                                         <a href="#">https://ekuatia.set.gov.py/consultas/qr</a>
                                     </span>
-                                    <t t-set="cdc" t-value="o.generate_cdc()" />
+                                    
                                     <h3 style="text-align:center;">CDC: <t t-esc="cdc" /></h3>
                                 </div>
                             </div>
